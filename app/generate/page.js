@@ -10,8 +10,12 @@ import { useRouter } from 'next/navigation'
 const page = () => {
     const router = useRouter()
 
-    const searchParams = useSearchParams()
-    const handlename = searchParams.get('handle')
+    useEffect(() => {
+        const searchParams = useSearchParams()
+        const handlename = searchParams.get('handle')
+    }, [])
+    
+  
 
 
     const [form, setform] = useState({ handle: handlename, picture: "" })
