@@ -9,14 +9,9 @@ import Navbar from '../components/Navbar'
 import { useRouter } from 'next/navigation'
 const page = () => {
     const router = useRouter()
-    let handlename;
-    useEffect(() => {
-        const searchParams = useSearchParams()
-         handlename = searchParams.get('handle')
-    }, [])
-    
-  
 
+    const searchParams = useSearchParams()
+    const handlename = searchParams.get('handle')
 
     const [form, setform] = useState({ handle: handlename, picture: "" })
     const [linkandlinktext, setlinkandlinktext] = useState([])
@@ -52,7 +47,7 @@ const page = () => {
                 redirect: "follow"
             };
 
-            fetch(`${NEXT_PUBLIC_HOST}/api/generate`, requestOptions)
+            fetch(`${process.env.NEXT_PUBLIC_HOST}api/generate`, requestOptions)
                 .then((response) => response.text())
                 .then((result) => console.log(result))
                 .catch((error) => console.error(error));
