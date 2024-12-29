@@ -9,9 +9,14 @@ import Navbar from '../components/Navbar'
 import { useRouter } from 'next/navigation'
 const page = () => {
     const router = useRouter()
+    let handlename;
 
-    const searchParams = useSearchParams()
-    const handlename = searchParams.get('handle')
+    useEffect(() => {
+        const searchParams = useSearchParams()
+        handlename = searchParams.get('handle')
+
+    }, [])
+
 
     const [form, setform] = useState({ handle: handlename, picture: "" })
     const [linkandlinktext, setlinkandlinktext] = useState([])
