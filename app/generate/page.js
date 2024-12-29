@@ -52,7 +52,7 @@ const page = () => {
                 redirect: "follow"
             };
 
-            fetch("http://localhost:3000/api/generate", requestOptions)
+            fetch(`${NEXT_PUBLIC_HOST}/api/generate`, requestOptions)
                 .then((response) => response.text())
                 .then((result) => console.log(result))
                 .catch((error) => console.error(error));
