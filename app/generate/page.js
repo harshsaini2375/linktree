@@ -9,10 +9,10 @@ import Navbar from '../components/Navbar'
 import { useRouter } from 'next/navigation'
 const page = () => {
     const router = useRouter()
-
+    let handlename;
     useEffect(() => {
         const searchParams = useSearchParams()
-        const handlename = searchParams.get('handle')
+         handlename = searchParams.get('handle')
     }, [])
     
   
