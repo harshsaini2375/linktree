@@ -7,8 +7,9 @@ import { useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import { useRouter } from 'next/navigation'
 import { useSearchParams } from 'next/navigation'
+import { Suspense } from 'react'
 
-const Generate = () => {
+const MyPage = () => {
     const router = useRouter()
     const searchParams = useSearchParams()
 
@@ -109,4 +110,10 @@ const Generate = () => {
     )
 }
 
-export default Generate
+const WrappedMyPage = () => (
+    <Suspense fallback={<div>Loading...</div>}>
+      <MyPage />
+    </Suspense>
+  );
+  
+  export default WrappedMyPage;
