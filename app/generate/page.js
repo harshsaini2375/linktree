@@ -4,11 +4,11 @@ import React from 'react'
 import Image from 'next/image'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import { useSearchParams } from 'next/navigation'
 import Navbar from '../components/Navbar'
 import { useRouter } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 
-const page = () => {
+const Generate = () => {
     const router = useRouter()
     const searchParams = useSearchParams()
 
@@ -109,4 +109,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Generate
