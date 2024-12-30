@@ -7,17 +7,12 @@ import { useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Navbar from '../components/Navbar'
 import { useRouter } from 'next/navigation'
+
 const page = () => {
     const router = useRouter()
-    let handlename;
+    const searchParams = useSearchParams()
 
-    useEffect(() => {
-        const searchParams = useSearchParams()
-        handlename = searchParams.get('handle')
-
-    }, [])
-
-
+    const [handlename, sethandlename] = useState(searchParams.get('handle'))
     const [form, setform] = useState({ handle: handlename, picture: "" })
     const [linkandlinktext, setlinkandlinktext] = useState([])
     const [create, setcreate] = useState(false)
