@@ -48,7 +48,7 @@ const MyPage = () => {
                 redirect: "follow"
             };
 
-            fetch(`${process.env.NEXT_PUBLIC_HOST}api/generate`, requestOptions)
+            fetch(`${process.env.NEXT_PUBLIC_HOST}/api/generate`, requestOptions)
                 .then((response) => response.text())
                 .then((result) => console.log(result))
                 .catch((error) => console.error(error));
