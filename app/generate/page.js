@@ -31,37 +31,41 @@ const MyPage = () => {
     useEffect(() => {
 
         if (create == true) {
-            const myHeaders = new Headers();
-            myHeaders.append("Content-Type", "application/json");
-
-            const raw = JSON.stringify({
-                "links": linkandlinktext,
-                "handle": form.handle,
-                "picture": form.picture
-            });
-            console.log(raw);
-
-            const requestOptions = {
-                method: "POST",
-                headers: myHeaders,
-                body: raw,
-                redirect: "follow"
-            };
-
-            fetch(`${process.env.NEXT_PUBLIC_HOST}/api/generate`, requestOptions)
-                .then((response) => response.text())
-                .then((result) => console.log(result))
-                .catch((error) => console.error(error));
-
-            setform({ handle: "", picture: "" })
-            setlink('')
-            setlinktext('')
-            setlinkandlinktext([])
-            setcreate(false)
-            router.push(`/${form.handle}`)
+           fetchdata()
         }
     }, [linkandlinktext])
 
+    const fetchdata = async() => {
+        const myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        const raw = JSON.stringify({
+            "links": linkandlinktext,
+            "handle": form.handle,
+            "picture": form.picture
+        });
+        console.log(raw);
+
+        const requestOptions = {
+            method: "POST",
+            headers: myHeaders,
+            body: raw,
+            redirect: "follow"
+        };
+
+       await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/generate`, requestOptions)
+            .then((response) => response.text())
+            .then((result) => console.log(result))
+            .catch((error) => console.error(error));
+
+        setform({ handle: "", picture: "" })
+        setlink('')
+        setlinktext('')
+        setlinkandlinktext([])
+        setcreate(false)
+        router.push(`/${form.handle}`)
+    }
+    
 
     const handleaddmore = () => {
         setlinkandlinktext([...linkandlinktext, { 'link': link, 'linktext': linktext }])
