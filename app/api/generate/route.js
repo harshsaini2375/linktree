@@ -27,11 +27,12 @@ export async function POST(request) {
         return Response.json({ message: 'new links inserted', Error: false })
     }
 
-    await collection.insertOne({
+    const inserteddata = await collection.insertOne({
         handle: body.handle,
         picture: body.picture,
         links: body.links,
     })
+    console.log(inserteddata);
 
     return Response.json({ message: 'inserted', Error: false })
 }
